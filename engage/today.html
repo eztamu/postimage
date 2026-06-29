@@ -17,91 +17,164 @@ header .sub{font-size:12px;opacity:.9;margin-top:2px}
 .badge{background:#fbe9c8;color:var(--brown2);border-radius:999px;padding:1px 8px;font-size:12px}
 .user{font-weight:700}
 .kw{font-size:11px;color:#9a8b78}
-.post{font-size:14px;background:#fbf6ec;border-radius:10px;padding:10px;margin:6px 0;white-space:pre-wrap;max-height:7.5em;overflow:hidden;position:relative}
+.post{font-size:14px;background:#fbf6ec;border-radius:10px;padding:10px;margin:6px 0;white-space:pre-wrap;max-height:7.5em;overflow:hidden}
 .post.open{max-height:none}
 .more{font-size:12px;color:var(--brown);background:none;border:none;padding:4px 0;cursor:pointer}
-.reply{font-size:14px;background:#eef6ec;border:1px dashed #b9d4ad;border-radius:10px;padding:10px;margin:6px 0}
 .note{font-size:12px;color:#a06b2a;margin:4px 0}
-.btns{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-.btn{flex:1;min-width:130px;text-align:center;text-decoration:none;border:none;border-radius:10px;padding:11px 10px;font-size:14px;font-weight:700;cursor:pointer}
-.btn.open{background:var(--brown);color:#fff}
-.btn.copy{background:#fbe9c8;color:var(--brown2)}
-.btn.copy.copied{background:#cfe9c2}
-.chk{display:flex;align-items:center;gap:6px;font-size:13px;color:#7a6a58;margin-top:8px}
+.open-btn{display:block;text-align:center;text-decoration:none;background:var(--brown);color:#fff;border-radius:10px;padding:11px;font-size:14px;font-weight:700;margin:8px 0}
+.rlabel{font-size:12px;color:#7a6a58;margin:10px 0 4px}
+.reply{background:#eef6ec;border:1px solid #d3e6c8;border-radius:10px;padding:9px 10px;margin:0 0 8px}
+.rtype{font-size:11px;font-weight:700;color:#4e7a3a;margin-bottom:3px}
+.rtext{font-size:14px}
+.copy{margin-top:6px;background:#fbe9c8;color:var(--brown2);border:none;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.copy.copied{background:#cfe9c2}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;color:#7a6a58;margin-top:10px}
 .empty{text-align:center;color:#9a8b78;padding:40px 0}
 footer{text-align:center;font-size:11px;color:#a99;padding:18px}
 </style></head><body>
-<header><h1>🍚 今日のリプ対象</h1><div class="sub">2026-06-29・6件／共感のみ・宣伝は控えめに</div></header>
+<header><h1>🍚 今日のリプ対象</h1><div class="sub">2026-06-29・6件／リプは3案から選んでコピー</div></header>
 <div class="wrap">
 <div class="card" id="c1">
-  <div class="meta"><span class="badge">🆕41分</span><span class="user">@coco_ne_77</span><span class="kw">🔍献立しんどい</span></div>
-  <div class="post" id="p1" data-reply="献立って“作る”より“毎日考える”のが本当にしんどいんですよね…😢 折半なのに考える担当がいつも自分、って気づかれにくいモヤモヤ、すごく分かります。泣いて伝えられたの、えらいです。少しでも負担が減りますように🙏">同棲中。生活費も家事も折半のはずなのに、毎日献立を考えて作るのは自分ばかり。彼にも泣いて訴えたが、彼の中途半端さにモヤモヤしてしんどい、という生々しい吐露。</div>
+  <div class="meta"><span class="badge">🆕3時間</span><span class="user">@mari_room_tokimeki</span><span class="kw">🔍献立しんどい</span></div>
+  <div class="post">「今日のご飯、何にしよう…毎日献立を考えるの、作るよりしんどい」という共感系の短い投稿。</div>
   <button class="more" onclick="toggleMore(this)">…もっと読む</button>
   
-  <div class="reply">献立って“作る”より“毎日考える”のが本当にしんどいんですよね…😢 折半なのに考える担当がいつも自分、って気づかれにくいモヤモヤ、すごく分かります。泣いて伝えられたの、えらいです。少しでも負担が減りますように🙏</div>
-  <div class="btns">
-    <a class="btn open" href="https://www.threads.com/@coco_ne_77/post/DaKb4iDkWWF" target="_blank" rel="noopener">📱 開いてリプ</a>
-    <button class="btn copy" onclick="copyText(this,'p1')">📋 リプ文コピー</button>
+  <a class="open-btn" href="https://www.threads.com/@mari_room_tokimeki/post/DaKcOLejwmu" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r1_1" data-reply="ほんとそれ…作るより“考える”のがしんどいんですよね🥲 わたしも毎晩これ。今日は決めなくていい日にしましょ☺️">ほんとそれ…作るより“考える”のがしんどいんですよね🥲 わたしも毎晩これ。今日は決めなくていい日にしましょ☺️</div>
+    <button class="copy" onclick="copyText(this,'r1_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r1_2" data-reply="考えるのがメインイベントですよねw わたしなんて悩みすぎて結局カレーにたどり着きます🍛">考えるのがメインイベントですよねw わたしなんて悩みすぎて結局カレーにたどり着きます🍛</div>
+    <button class="copy" onclick="copyText(this,'r1_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r1_3" data-reply="献立を考える係、無給なのにフルタイムすぎる😇 今日はもう“あるもの祭り”で優勝でいきましょ🏆">献立を考える係、無給なのにフルタイムすぎる😇 今日はもう“あるもの祭り”で優勝でいきましょ🏆</div>
+    <button class="copy" onclick="copyText(this,'r1_3')">📋 これをコピー</button>
   </div>
   <label class="chk"><input type="checkbox" data-key="done_2026-06-29_1" onchange="toggleDone(this,'done_2026-06-29_1')"> 対応済みにする</label>
 </div>
 <div class="card" id="c2">
-  <div class="meta"><span class="badge">🆕39分</span><span class="user">@mari_room_tokimeki</span><span class="kw">🔍献立しんどい</span></div>
-  <div class="post" id="p2" data-reply="『作るよりしんどい』、ほんとそれです…🥲 献立考えるの、見えない家事の中でも上位の重さだと思う。今日はもう決めなくていい日にしちゃいましょ☺️">「今日のご飯何にしよう…毎日献立を考えるの、作るよりしんどい」という短い共感系の投稿。</div>
+  <div class="meta"><span class="badge">🆕3分</span><span class="user">@yui_research222</span><span class="kw">🔍ご飯作りたくない</span></div>
+  <div class="post">「7日中5日夕ご飯作っててえらいぞ私！でも作りたくない理由は“何を作っていいか分からない”が一番」という投稿。</div>
   <button class="more" onclick="toggleMore(this)">…もっと読む</button>
   
-  <div class="reply">『作るよりしんどい』、ほんとそれです…🥲 献立考えるの、見えない家事の中でも上位の重さだと思う。今日はもう決めなくていい日にしちゃいましょ☺️</div>
-  <div class="btns">
-    <a class="btn open" href="https://www.threads.com/@mari_room_tokimeki/post/DaKcOLejwmu" target="_blank" rel="noopener">📱 開いてリプ</a>
-    <button class="btn copy" onclick="copyText(this,'p2')">📋 リプ文コピー</button>
+  <a class="open-btn" href="https://www.threads.com/@yui_research222/post/DaK0X_hE1_u" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r2_1" data-reply="5日も作っててえらすぎます👏 “何作るか問題”って一番の敵ですよね…おつかれさまです☺️">5日も作っててえらすぎます👏 “何作るか問題”って一番の敵ですよね…おつかれさまです☺️</div>
+    <button class="copy" onclick="copyText(this,'r2_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r2_2" data-reply="メニューさえ決まれば9割勝ちなのにw わたしは冷蔵庫の前で5分フリーズしてます🧊">メニューさえ決まれば9割勝ちなのにw わたしは冷蔵庫の前で5分フリーズしてます🧊</div>
+    <button class="copy" onclick="copyText(this,'r2_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r2_3" data-reply="えらいぞ自分、もっと言って大丈夫です📣 献立は“決まらない”が標準装備なので気にせずいきましょ😂">えらいぞ自分、もっと言って大丈夫です📣 献立は“決まらない”が標準装備なので気にせずいきましょ😂</div>
+    <button class="copy" onclick="copyText(this,'r2_3')">📋 これをコピー</button>
   </div>
   <label class="chk"><input type="checkbox" data-key="done_2026-06-29_2" onchange="toggleDone(this,'done_2026-06-29_2')"> 対応済みにする</label>
 </div>
 <div class="card" id="c3">
-  <div class="meta"><span class="badge">🆕5時間</span><span class="user">@m_eri</span><span class="kw">🔍献立しんどい</span></div>
-  <div class="post" id="p3" data-reply="毎日考えるの、ほんとしんどいですよね😇 ワンオペの日は『焼くだけ・のせるだけ』に全振りしてます〜。豚こま＋焼肉のタレ丼、鮭フレーク＋卵丼あたりが救世主です🍚 無理しないでくださいね☺️">毎日献立を考えるのがしんどい。ワンオペの日は凝ったものは作れない。簡単で美味しいメニューを教えてほしい、と質問している。</div>
+  <div class="meta"><span class="badge">🆕1時間</span><span class="user">@conny__521</span><span class="kw">🔍ご飯作りたくない</span></div>
+  <div class="post">「あら？なんか…ご飯作りたくないみたい」という軽いノリの一言投稿。</div>
   <button class="more" onclick="toggleMore(this)">…もっと読む</button>
-  <div class="note">⚠️ 簡単メニューを質問中。軽いTipsはOK（押し売りはしない）</div>
-  <div class="reply">毎日考えるの、ほんとしんどいですよね😇 ワンオペの日は『焼くだけ・のせるだけ』に全振りしてます〜。豚こま＋焼肉のタレ丼、鮭フレーク＋卵丼あたりが救世主です🍚 無理しないでくださいね☺️</div>
-  <div class="btns">
-    <a class="btn open" href="https://www.threads.com/@m_eri/post/DaJ5T5pkfYg" target="_blank" rel="noopener">📱 開いてリプ</a>
-    <button class="btn copy" onclick="copyText(this,'p3')">📋 リプ文コピー</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@conny__521/post/DaKsANgGkjA" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r3_1" data-reply="その“なんか作りたくない”、すごく分かります🥲 そういう日はそういう日でOKですよ☺️">その“なんか作りたくない”、すごく分かります🥲 そういう日はそういう日でOKですよ☺️</div>
+    <button class="copy" onclick="copyText(this,'r3_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r3_2" data-reply="あら？わたしも今まさにそれですw 気持ち同期しました🤝">あら？わたしも今まさにそれですw 気持ち同期しました🤝</div>
+    <button class="copy" onclick="copyText(this,'r3_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r3_3" data-reply="『作りたくないみたい』の他人事感が最高ですwww 今日は丼か麺に全部おまかせしましょ🍜">『作りたくないみたい』の他人事感が最高ですwww 今日は丼か麺に全部おまかせしましょ🍜</div>
+    <button class="copy" onclick="copyText(this,'r3_3')">📋 これをコピー</button>
   </div>
   <label class="chk"><input type="checkbox" data-key="done_2026-06-29_3" onchange="toggleDone(this,'done_2026-06-29_3')"> 対応済みにする</label>
 </div>
 <div class="card" id="c4">
-  <div class="meta"><span class="badge">🆕46分</span><span class="user">@kyojii</span><span class="kw">🔍夜ご飯決まらない</span></div>
-  <div class="post" id="p4" data-reply="熱の中で双子のお風呂とごはん…それだけで充分すごいです🥹 今日はレトルトでもふりかけご飯でも100点！お風呂はスキップで大丈夫。どうかご自愛を、エール送ります🔥">熱が出てしまったが、双子(1歳半)をお風呂・晩ごはん・寝かしつけしなければならない。夫は23時帰り。エールがほしい、という投稿。</div>
+  <div class="meta"><span class="badge">🆕3時間</span><span class="user">@kuu_jh</span><span class="kw">🔍ワンオペごはん</span></div>
+  <div class="post">生後3ヶ月のワンオペ。自分のお昼は毎日納豆卵かけご飯で済ませているが、さすがに飽きてきた、という投稿。</div>
   <button class="more" onclick="toggleMore(this)">…もっと読む</button>
-  <div class="note">⚠️ 体調不良。共感とエールのみ・誘導しない</div>
-  <div class="reply">熱の中で双子のお風呂とごはん…それだけで充分すごいです🥹 今日はレトルトでもふりかけご飯でも100点！お風呂はスキップで大丈夫。どうかご自愛を、エール送ります🔥</div>
-  <div class="btns">
-    <a class="btn open" href="https://www.threads.com/@kyojii/post/DaKbYrRIJIh" target="_blank" rel="noopener">📱 開いてリプ</a>
-    <button class="btn copy" onclick="copyText(this,'p4')">📋 リプ文コピー</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@kuu_jh/post/DaKcvxnkziD" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r4_1" data-reply="ワンオペだと自分のごはん後回しになりますよね🥲 ちゃんと食べてるだけで100点です☺️">ワンオペだと自分のごはん後回しになりますよね🥲 ちゃんと食べてるだけで100点です☺️</div>
+    <button class="copy" onclick="copyText(this,'r4_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r4_2" data-reply="納豆卵かけご飯、最強だけど飽きますよねw わたしはそこに“しらす”足して気分変えてました🐟">納豆卵かけご飯、最強だけど飽きますよねw わたしはそこに“しらす”足して気分変えてました🐟</div>
+    <button class="copy" onclick="copyText(this,'r4_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r4_3" data-reply="納豆卵かけご飯、殿堂入りメニューすぎる😂 のり足すだけで別人になりますよ🍚">納豆卵かけご飯、殿堂入りメニューすぎる😂 のり足すだけで別人になりますよ🍚</div>
+    <button class="copy" onclick="copyText(this,'r4_3')">📋 これをコピー</button>
   </div>
   <label class="chk"><input type="checkbox" data-key="done_2026-06-29_4" onchange="toggleDone(this,'done_2026-06-29_4')"> 対応済みにする</label>
 </div>
 <div class="card" id="c5">
-  <div class="meta"><span class="badge">🆕1時間</span><span class="user">@watashiwa.017</span><span class="kw">🔍ご飯作りたくない</span></div>
-  <div class="post" id="p5" data-reply="お仕事おつかれさまです🥹 何もしたくない日、ありますよね。オムライス最高だし、もっと手抜きで“納豆卵かけご飯＋お味噌汁”でも立派な晩ごはんです🍚 今日は頑張らなくてOK☺️">仕事から帰宅して心の底から何もしたくない。めちゃくちゃ簡単な晩ごはんを教えてほしい（オムライス？）と質問している。</div>
+  <div class="meta"><span class="badge">🆕2時間</span><span class="user">@hayane.mama</span><span class="kw">🔍ワンオペごはん</span></div>
+  <div class="post">ワンオペの皆さんへ「今日の時短晩ごはんは何？」と質問。自分は包まないロールキャベツにした、と共有している。</div>
   <button class="more" onclick="toggleMore(this)">…もっと読む</button>
-  <div class="note">⚠️ 簡単メニューを質問中。軽い提案はOK</div>
-  <div class="reply">お仕事おつかれさまです🥹 何もしたくない日、ありますよね。オムライス最高だし、もっと手抜きで“納豆卵かけご飯＋お味噌汁”でも立派な晩ごはんです🍚 今日は頑張らなくてOK☺️</div>
-  <div class="btns">
-    <a class="btn open" href="https://www.threads.com/@watashiwa.017/post/DaKX8hniVZw" target="_blank" rel="noopener">📱 開いてリプ</a>
-    <button class="btn copy" onclick="copyText(this,'p5')">📋 リプ文コピー</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@hayane.mama/post/DaKknxEGZES" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r5_1" data-reply="包まないロールキャベツ、天才では？😳 その発想だけで今日のMVPです👏">包まないロールキャベツ、天才では？😳 その発想だけで今日のMVPです👏</div>
+    <button class="copy" onclick="copyText(this,'r5_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r5_2" data-reply="時短ほんと大事ですよね〜！わたしは“切って炒めるだけ”の日が週の半分です😂">時短ほんと大事ですよね〜！わたしは“切って炒めるだけ”の日が週の半分です😂</div>
+    <button class="copy" onclick="copyText(this,'r5_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r5_3" data-reply="包まない＝勝ち、です🏆 我が家は今日“のせるだけ丼”で優勝しました🍚">包まない＝勝ち、です🏆 我が家は今日“のせるだけ丼”で優勝しました🍚</div>
+    <button class="copy" onclick="copyText(this,'r5_3')">📋 これをコピー</button>
   </div>
   <label class="chk"><input type="checkbox" data-key="done_2026-06-29_5" onchange="toggleDone(this,'done_2026-06-29_5')"> 対応済みにする</label>
 </div>
 <div class="card" id="c6">
-  <div class="meta"><span class="badge">🆕1時間</span><span class="user">@nic.oharu</span><span class="kw">🔍ご飯作りたくない</span></div>
-  <div class="post" id="p6" data-reply="『今日も順調に作りたくない』の言い回し、好きですwww そういう日は潔く丼か麺で勝ち確です🍜 おつかれさまです☺️">「今日も順調にご飯作りたくない‼️」という軽いノリの一言投稿。</div>
+  <div class="meta"><span class="badge">🆕2時間</span><span class="user">@029_ouchi</span><span class="kw">🔍ワンオペごはん</span></div>
+  <div class="post">夕方からの双子ワンオペごはん。カトラリーや味噌汁を練習中、その後お風呂もあり、1日の最後にしんどい、という投稿。</div>
   <button class="more" onclick="toggleMore(this)">…もっと読む</button>
   
-  <div class="reply">『今日も順調に作りたくない』の言い回し、好きですwww そういう日は潔く丼か麺で勝ち確です🍜 おつかれさまです☺️</div>
-  <div class="btns">
-    <a class="btn open" href="https://www.threads.com/@nic.oharu/post/DaKVEa6ElgO" target="_blank" rel="noopener">📱 開いてリプ</a>
-    <button class="btn copy" onclick="copyText(this,'p6')">📋 リプ文コピー</button>
+  <a class="open-btn" href="https://www.threads.com/@029_ouchi/post/DaKh2gSGfqK" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r6_1" data-reply="双子ワンオペごはん…想像しただけで尊敬です🥹 1日の最後、ほんとよく頑張ってます☺️">双子ワンオペごはん…想像しただけで尊敬です🥹 1日の最後、ほんとよく頑張ってます☺️</div>
+    <button class="copy" onclick="copyText(this,'r6_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r6_2" data-reply="しんどいって思っていいやつです🥲 わたしも夕方が毎日ラスボスでした…ファイトです👊">しんどいって思っていいやつです🥲 わたしも夕方が毎日ラスボスでした…ファイトです👊</div>
+    <button class="copy" onclick="copyText(this,'r6_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r6_3" data-reply="夕方のワンオペごはん、完全にラスボス戦ですよね😂 今日のあなたはもうクリア済みです🎮">夕方のワンオペごはん、完全にラスボス戦ですよね😂 今日のあなたはもうクリア済みです🎮</div>
+    <button class="copy" onclick="copyText(this,'r6_3')">📋 これをコピー</button>
   </div>
   <label class="chk"><input type="checkbox" data-key="done_2026-06-29_6" onchange="toggleDone(this,'done_2026-06-29_6')"> 対応済みにする</label>
 </div>
