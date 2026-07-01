@@ -31,9 +31,41 @@ header .sub{font-size:12px;opacity:.9;margin-top:2px}
 .chk{display:flex;align-items:center;gap:6px;font-size:13px;color:#7a6a58;margin-top:10px}
 .empty{text-align:center;color:#9a8b78;padding:40px 0}
 footer{text-align:center;font-size:11px;color:#a99;padding:18px}
+
+.kpibar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 10px;font-size:13px;color:var(--brown2)}
+.kpibar b{color:var(--brown);font-size:16px}
+.kpibar .pace{color:#a05a2a;font-weight:700}
+.ptoggle{background:#fbe9c8;color:var(--brown2);border:none;border-radius:8px;padding:9px 12px;font-size:13px;font-weight:700;cursor:pointer;margin:0 0 12px}
+.panel{display:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin:0 0 14px}
+.panel.open{display:block}
+.panel .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:7px 0;font-size:14px}
+.panel .row label{color:#5a4a3a}
+.panel input[type=number]{width:96px;padding:9px;border:1px solid var(--line);border-radius:8px;font-size:16px;text-align:right}
+.panel .sec{font-size:12px;color:#9a8b78;margin:12px 0 2px;border-top:1px dashed var(--line);padding-top:8px}
+.panel .auto{font-weight:700;color:var(--brown);font-size:16px}
+.panel .hint{font-size:11px;color:#a99;margin-top:10px}
+
 </style></head><body>
-<header><h1>🍚 今日のリプ対象</h1><div class="sub">2026-07-02・7件／リプは3案から選んでコピー</div></header>
+<header><h1>🍚 今日のリプ対象</h1><div class="sub">2026-07-02 07:44更新・7件／リプは3案から選んでコピー</div></header>
 <div class="wrap">
+
+<div class="kpibar" id="kpibar">…</div>
+<button class="ptoggle" onclick="var p=document.getElementById('panel');p.classList.toggle('open');this.textContent=p.classList.contains('open')?'📊 実績パネルを閉じる':'📊 今日の実績を入力';">📊 今日の実績を入力</button>
+<div class="panel" id="panel">
+  <div class="row"><label>今日のリプ（自動集計）</label><span class="auto" id="autoreply">0</span></div>
+  <div class="sec">Threads</div>
+  <div class="row"><label>いいね</label><input type="number" min="0" inputmode="numeric" id="in_thlike"></div>
+  <div class="row"><label>フォロー</label><input type="number" min="0" inputmode="numeric" id="in_thfollow"></div>
+  <div class="sec">Instagram</div>
+  <div class="row"><label>いいね</label><input type="number" min="0" inputmode="numeric" id="in_iglike"></div>
+  <div class="row"><label>フォロー</label><input type="number" min="0" inputmode="numeric" id="in_igfollow"></div>
+  <div class="row"><label>コメント</label><input type="number" min="0" inputmode="numeric" id="in_igcomment"></div>
+  <div class="sec">現在のフォロワー数（KPIに反映）</div>
+  <div class="row"><label>IG</label><input type="number" min="0" inputmode="numeric" id="in_fig"></div>
+  <div class="row"><label>Threads</label><input type="number" min="0" inputmode="numeric" id="in_fth"></div>
+  <div class="hint">この端末内だけに日付ごと保存。フォロワー数は最新値でKPI計算に使われます。</div>
+</div>
+
 <div class="card" id="c1">
   <div class="meta"><span class="badge">🆕22時間</span><span class="user">@wmama_union</span><span class="kw">🔍献立しんどい</span></div>
   <div class="post">水曜日から献立を考える脳みそがなくなる、「今日どうしよう」が一番しんどいというつぶやき</div>
@@ -203,9 +235,39 @@ function copyText(btn, id){
   });
 }
 function toggleMore(b){var p=b.previousElementSibling;p.classList.toggle('open');b.textContent=p.classList.contains('open')?'閉じる':'…もっと読む';}
-function toggleDone(cb,key){var c=cb.closest('.card');c.classList.toggle('done',cb.checked);localStorage.setItem(key,cb.checked?'1':'');}
+function toggleDone(cb,key){var c=cb.closest('.card');c.classList.toggle('done',cb.checked);localStorage.setItem(key,cb.checked?'1':'');if(window.__engageRefresh)window.__engageRefresh();}
 document.querySelectorAll('input[data-key]').forEach(function(cb){
   var k=cb.getAttribute('data-key'); if(localStorage.getItem(k)==='1'){cb.checked=true;cb.closest('.card').classList.add('done');}
 });
+</script>
+<script>
+(function(){
+  var GOAL=500, DEADLINE='2026-08-06', DAY='2026-07-02';
+  function lsGet(k,d){try{return JSON.parse(localStorage.getItem(k))||d;}catch(e){return d;}}
+  function lsSet(k,v){localStorage.setItem(k,JSON.stringify(v));}
+  function num(id){var v=parseInt(document.getElementById(id).value,10);return isNaN(v)?0:v;}
+  function setV(id,v){if(v)document.getElementById(id).value=v;}
+  function countReplies(){var n=0;document.querySelectorAll('input[data-key]').forEach(function(cb){if(cb.checked)n++;});return n;}
+  function saveEngage(){lsSet('engage_'+DAY,{thlike:num('in_thlike'),thfollow:num('in_thfollow'),iglike:num('in_iglike'),igfollow:num('in_igfollow'),igcomment:num('in_igcomment'),reply:countReplies()});}
+  function saveFollowers(){var f=lsGet('kpi_followers',{});var ig=num('in_fig'),th=num('in_fth');if(ig>0)f.ig=ig;if(th>0)f.th=th;f.date=DAY;lsSet('kpi_followers',f);renderKpi();}
+  function daysLeft(){var d=new Date(DEADLINE+'T23:59:59'),now=new Date();return Math.max(0,Math.ceil((d-now)/86400000));}
+  function renderKpi(){
+    var f=lsGet('kpi_followers',{}),ig=f.ig||0,th=f.th||0,sum=ig+th;
+    var pct=Math.round(sum/GOAL*100),left=Math.max(0,GOAL-sum),dl=daysLeft(),pace=dl>0?left/dl:left;
+    var e=lsGet('engage_'+DAY,{}),rep=countReplies();
+    var ar=document.getElementById('autoreply');if(ar)ar.textContent=rep;
+    document.getElementById('kpibar').innerHTML=
+      'フォロワー合算 <b>'+sum+'</b> / '+GOAL+'（'+pct+'%）　残り'+left+'人<br>'+
+      '締切まで '+dl+'日 ・ <span class="pace">必要 '+pace.toFixed(1)+'人/日</span><br>'+
+      '<span style="font-size:12px;color:#9a8b78">今日: リプ'+rep+' / Thいいね'+(e.thlike||0)+' Thフォロー'+(e.thfollow||0)+' / IGいいね'+(e.iglike||0)+' IGフォロー'+(e.igfollow||0)+'</span>';
+  }
+  window.__engageRefresh=function(){saveEngage();renderKpi();};
+  var e=lsGet('engage_'+DAY,{});
+  setV('in_thlike',e.thlike);setV('in_thfollow',e.thfollow);setV('in_iglike',e.iglike);setV('in_igfollow',e.igfollow);setV('in_igcomment',e.igcomment);
+  var f=lsGet('kpi_followers',{});setV('in_fig',f.ig);setV('in_fth',f.th);
+  ['in_thlike','in_thfollow','in_iglike','in_igfollow','in_igcomment'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){saveEngage();renderKpi();});});
+  ['in_fig','in_fth'].forEach(function(id){document.getElementById(id).addEventListener('input',saveFollowers);});
+  renderKpi();
+})();
 </script>
 </body></html>
