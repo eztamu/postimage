@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日のリプ対象 2026-07-02</title>
+<style>
+:root{--cream:#faf3e6;--brown:#8a5c38;--brown2:#6b4327;--card:#fff;--line:#e7d9c2;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:#3a2c20;font-family:-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.6}
+header{position:sticky;top:0;background:var(--brown);color:#fff;padding:12px 16px;z-index:5}
+header h1{font-size:16px;margin:0}
+header .sub{font-size:12px;opacity:.9;margin-top:2px}
+.wrap{padding:12px;max-width:680px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.card.done{opacity:.5}
+.meta{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--brown2);margin-bottom:6px;flex-wrap:wrap}
+.badge{background:#fbe9c8;color:var(--brown2);border-radius:999px;padding:1px 8px;font-size:12px}
+.user{font-weight:700}
+.kw{font-size:11px;color:#9a8b78}
+.post{font-size:14px;background:#fbf6ec;border-radius:10px;padding:10px;margin:6px 0;white-space:pre-wrap;max-height:7.5em;overflow:hidden}
+.post.open{max-height:none}
+.more{font-size:12px;color:var(--brown);background:none;border:none;padding:4px 0;cursor:pointer}
+.note{font-size:12px;color:#a06b2a;margin:4px 0}
+.open-btn{display:block;text-align:center;text-decoration:none;background:var(--brown);color:#fff;border-radius:10px;padding:11px;font-size:14px;font-weight:700;margin:8px 0}
+.rlabel{font-size:12px;color:#7a6a58;margin:10px 0 4px}
+.reply{background:#eef6ec;border:1px solid #d3e6c8;border-radius:10px;padding:9px 10px;margin:0 0 8px}
+.rtype{font-size:11px;font-weight:700;color:#4e7a3a;margin-bottom:3px}
+.rtext{font-size:14px}
+.copy{margin-top:6px;background:#fbe9c8;color:var(--brown2);border:none;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.copy.copied{background:#cfe9c2}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;color:#7a6a58;margin-top:10px}
+.empty{text-align:center;color:#9a8b78;padding:40px 0}
+footer{text-align:center;font-size:11px;color:#a99;padding:18px}
+
+.kpibar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 10px;font-size:13px;color:var(--brown2)}
+.kpibar b{color:var(--brown);font-size:16px}
+.kpibar .pace{color:#a05a2a;font-weight:700}
+.ptoggle{background:#fbe9c8;color:var(--brown2);border:none;border-radius:8px;padding:9px 12px;font-size:13px;font-weight:700;cursor:pointer;margin:0 0 12px}
+.panel{display:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin:0 0 14px}
+.panel.open{display:block}
+.panel .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:7px 0;font-size:14px}
+.panel .row label{color:#5a4a3a}
+.panel input[type=number]{width:96px;padding:9px;border:1px solid var(--line);border-radius:8px;font-size:16px;text-align:right}
+.panel .sec{font-size:12px;color:#9a8b78;margin:12px 0 2px;border-top:1px dashed var(--line);padding-top:8px}
+.panel .auto{font-weight:700;color:var(--brown);font-size:16px}
+.panel .hint{font-size:11px;color:#a99;margin-top:10px}
+
+</style></head><body>
+<header><h1>🍚 今日のリプ対象</h1><div class="sub">2026-07-02 07:44更新・7件／リプは3案から選んでコピー</div></header>
+<div class="wrap">
+
+<div class="kpibar" id="kpibar">…</div>
+<button class="ptoggle" onclick="var p=document.getElementById('panel');p.classList.toggle('open');this.textContent=p.classList.contains('open')?'📊 実績パネルを閉じる':'📊 今日の実績を入力';">📊 今日の実績を入力</button>
+<div class="panel" id="panel">
+  <div class="row"><label>今日のリプ（自動集計）</label><span class="auto" id="autoreply">0</span></div>
+  <div class="sec">Threads</div>
+  <div class="row"><label>いいね</label><input type="number" min="0" inputmode="numeric" id="in_thlike"></div>
+  <div class="row"><label>フォロー</label><input type="number" min="0" inputmode="numeric" id="in_thfollow"></div>
+  <div class="sec">Instagram</div>
+  <div class="row"><label>いいね</label><input type="number" min="0" inputmode="numeric" id="in_iglike"></div>
+  <div class="row"><label>フォロー</label><input type="number" min="0" inputmode="numeric" id="in_igfollow"></div>
+  <div class="row"><label>コメント</label><input type="number" min="0" inputmode="numeric" id="in_igcomment"></div>
+  <div class="sec">現在のフォロワー数（KPIに反映）</div>
+  <div class="row"><label>IG</label><input type="number" min="0" inputmode="numeric" id="in_fig"></div>
+  <div class="row"><label>Threads</label><input type="number" min="0" inputmode="numeric" id="in_fth"></div>
+  <div class="hint">この端末内だけに日付ごと保存。フォロワー数は最新値でKPI計算に使われます。</div>
+</div>
+
+<div class="card" id="c1">
+  <div class="meta"><span class="badge">🆕22時間</span><span class="user">@wmama_union</span><span class="kw">🔍献立しんどい</span></div>
+  <div class="post">水曜日から献立を考える脳みそがなくなる、「今日どうしよう」が一番しんどいというつぶやき</div>
+  <button class="more" onclick="toggleMore(this)">…もっと読む</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@wmama_union/post/DaOjw8sk_eX" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r1_1" data-reply="水曜日から脳みそが献立を拒否しはじめる感じ、ものすごくわかります😌「今日どうしよう？」って問い続けること自体がもうしんどいですよね。毎日なんとか答えてる自分、ちゃんと偉いと思います。">水曜日から脳みそが献立を拒否しはじめる感じ、ものすごくわかります😌「今日どうしよう？」って問い続けること自体がもうしんどいですよね。毎日なんとか答えてる自分、ちゃんと偉いと思います。</div>
+    <button class="copy" onclick="copyText(this,'r1_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r1_2" data-reply="月火は元気で献立考えられるのに、水曜あたりから「えーとえーと…」ってなるやつ。木金は「昨日の残りでよくない？」モードに突入してます🤣 週後半に向けてメモリが足りなくなるの、わかりすぎます。">月火は元気で献立考えられるのに、水曜あたりから「えーとえーと…」ってなるやつ。木金は「昨日の残りでよくない？」モードに突入してます🤣 週後半に向けてメモリが足りなくなるの、わかりすぎます。</div>
+    <button class="copy" onclick="copyText(this,'r1_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r1_3" data-reply="水曜になると脳みそのメモリが献立で満杯になるんですよね。週後半はもう「なんか温かいもの」「あるもので」くらいのゆるい基準で乗り切っていい気がします。自分に優しくしていきましょ！">水曜になると脳みそのメモリが献立で満杯になるんですよね。週後半はもう「なんか温かいもの」「あるもので」くらいのゆるい基準で乗り切っていい気がします。自分に優しくしていきましょ！</div>
+    <button class="copy" onclick="copyText(this,'r1_3')">📋 これをコピー</button>
+  </div>
+  <label class="chk"><input type="checkbox" data-key="done_2026-07-02_1" onchange="toggleDone(this,'done_2026-07-02_1')"> 対応済みにする</label>
+</div>
+<div class="card" id="c2">
+  <div class="meta"><span class="badge">🆕9時間</span><span class="user">@sainko105</span><span class="kw">🔍献立しんどい</span></div>
+  <div class="post">料理が家事の中で一番嫌い、キッチンに立つと体が動かない・吐き気がするというつぶやき</div>
+  <button class="more" onclick="toggleMore(this)">…もっと読む</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@sainko105/post/DaP7BkEEn0q" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r2_1" data-reply="キッチンに立つと体が動かなくなる感覚、正直に話してくれてありがとうございます😌 嫌いでも毎日なんとかしてる、それだけで十分すごいですよ。子どもが美味しいって食べてくれるならなおさら。">キッチンに立つと体が動かなくなる感覚、正直に話してくれてありがとうございます😌 嫌いでも毎日なんとかしてる、それだけで十分すごいですよ。子どもが美味しいって食べてくれるならなおさら。</div>
+    <button class="copy" onclick="copyText(this,'r2_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r2_2" data-reply="食欲は人一倍あるのに料理だけ嫌い…この矛盾、ホカも共感します笑 食べたいのに作りたくない、永遠の命題ですよね🍚 だからこそ少しでも楽になれる工夫を一緒に探していきたいです。">食欲は人一倍あるのに料理だけ嫌い…この矛盾、ホカも共感します笑 食べたいのに作りたくない、永遠の命題ですよね🍚 だからこそ少しでも楽になれる工夫を一緒に探していきたいです。</div>
+    <button class="copy" onclick="copyText(this,'r2_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r2_3" data-reply="ご飯・味噌汁・野菜炒めって実はかなり最強の組み合わせで全然ありだと思います！「献立」じゃなくて「フォーマット」があると毎日の「どうしよう」がなくなりますよ🍚">ご飯・味噌汁・野菜炒めって実はかなり最強の組み合わせで全然ありだと思います！「献立」じゃなくて「フォーマット」があると毎日の「どうしよう」がなくなりますよ🍚</div>
+    <button class="copy" onclick="copyText(this,'r2_3')">📋 これをコピー</button>
+  </div>
+  <label class="chk"><input type="checkbox" data-key="done_2026-07-02_2" onchange="toggleDone(this,'done_2026-07-02_2')"> 対応済みにする</label>
+</div>
+<div class="card" id="c3">
+  <div class="meta"><span class="badge">🆕9時間</span><span class="user">@satochan.seikaeiseisi</span><span class="kw">🔍献立しんどい</span></div>
+  <div class="post">鬱と更年期で献立が立てられず料理がしんどい、誰かが作ったものを食べたいというつぶやき</div>
+  <button class="more" onclick="toggleMore(this)">…もっと読む</button>
+  <div class="note">⚠️ メンタル系。共感のみ・誘導禁止</div>
+  <a class="open-btn" href="https://www.threads.com/@satochan.seikaeiseisi/post/DaP9ZhHklzw" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r3_1" data-reply="鬱と更年期のしんどさを抱えながら、家族のために必死に作ってるんですね😌「しんどいです」って言葉に、ちゃんと共感するひとがいますよ。今日もよくやったと思います。">鬱と更年期のしんどさを抱えながら、家族のために必死に作ってるんですね😌「しんどいです」って言葉に、ちゃんと共感するひとがいますよ。今日もよくやったと思います。</div>
+    <button class="copy" onclick="copyText(this,'r3_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・やさしい共感</div>
+    <div class="rtext" id="r3_2" data-reply="献立を立てることから料理が始まるって、毎日のことだから本当に重いですよね。考えるだけで消耗してしまう日があってもおかしくないです😌 今日もよく動いてるよ、って言いたいです。">献立を立てることから料理が始まるって、毎日のことだから本当に重いですよね。考えるだけで消耗してしまう日があってもおかしくないです😌 今日もよく動いてるよ、って言いたいです。</div>
+    <button class="copy" onclick="copyText(this,'r3_2')">📋 これをコピー</button>
+  </div>
+  <label class="chk"><input type="checkbox" data-key="done_2026-07-02_3" onchange="toggleDone(this,'done_2026-07-02_3')"> 対応済みにする</label>
+</div>
+<div class="card" id="c4">
+  <div class="meta"><span class="badge">🆕11時間</span><span class="user">@unidon_dondondon</span><span class="kw">🔍献立しんどい</span></div>
+  <div class="post">生きるのしんどいと前置きし、まな板洗剤で洗う・30分で夕飯作れるなど自分の基準が世間とズレているのか真剣に悩むつぶやき</div>
+  <button class="more" onclick="toggleMore(this)">…もっと読む</button>
+  <div class="note">⚠️ メンタル系。共感のみ・誘導禁止</div>
+  <a class="open-btn" href="https://www.threads.com/@unidon_dondondon/post/DaPs12SGlul" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r4_1" data-reply="まな板も包丁もちゃんと洗剤で洗って、クソ真面目に向き合ってる。それは手を抜けなくてしんどいんじゃなくて、ちゃんと丁寧に生きようとしてる証拠だと思います😌 それで十分ですよ。">まな板も包丁もちゃんと洗剤で洗って、クソ真面目に向き合ってる。それは手を抜けなくてしんどいんじゃなくて、ちゃんと丁寧に生きようとしてる証拠だと思います😌 それで十分ですよ。</div>
+    <button class="copy" onclick="copyText(this,'r4_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・やさしい共感</div>
+    <div class="rtext" id="r4_2" data-reply="「みんなどうやってるの？」って疑問、すごく正直で伝わってきます。そういうことをちゃんと考えてる人こそしんどくなりますよね。比べなくていい、今日のしんどさはちゃんと届いてます😌">「みんなどうやってるの？」って疑問、すごく正直で伝わってきます。そういうことをちゃんと考えてる人こそしんどくなりますよね。比べなくていい、今日のしんどさはちゃんと届いてます😌</div>
+    <button class="copy" onclick="copyText(this,'r4_2')">📋 これをコピー</button>
+  </div>
+  <label class="chk"><input type="checkbox" data-key="done_2026-07-02_4" onchange="toggleDone(this,'done_2026-07-02_4')"> 対応済みにする</label>
+</div>
+<div class="card" id="c5">
+  <div class="meta"><span class="badge">🆕11時間</span><span class="user">@sa_____ra.55</span><span class="kw">🔍節約ごはん</span></div>
+  <div class="post">主婦に節約飯を教えてほしいというリクエスト投稿</div>
+  <button class="more" onclick="toggleMore(this)">…もっと読む</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@sa_____ra.55/post/DaPuF6ZGEmW" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r5_1" data-reply="節約ごはんを探してる声、わかります〜！食費も物価もじわじわあがってて、毎日の献立が地味にしんどいですよね😌 みんなでアイデア持ち寄れると嬉しいですよね。">節約ごはんを探してる声、わかります〜！食費も物価もじわじわあがってて、毎日の献立が地味にしんどいですよね😌 みんなでアイデア持ち寄れると嬉しいですよね。</div>
+    <button class="copy" onclick="copyText(this,'r5_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・ちょいtips</div>
+    <div class="rtext" id="r5_2" data-reply="節約の定番は「もやし+卵炒め」「豆腐の味噌汁+納豆ご飯」あたりが単価最強です。あとキャベツを1玉まとめ買いすると、炒め物・スープ・サラダに使いまわせてかなりコスパいいですよ🍚">節約の定番は「もやし+卵炒め」「豆腐の味噌汁+納豆ご飯」あたりが単価最強です。あとキャベツを1玉まとめ買いすると、炒め物・スープ・サラダに使いまわせてかなりコスパいいですよ🍚</div>
+    <button class="copy" onclick="copyText(this,'r5_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r5_3" data-reply="節約の鬼になると「今週のもやし消費量」を誇り始めるやつ、ホカは知ってます🤣 でも意外と節約ごはんが一番美味しかったりするので、一緒に探しましょう！">節約の鬼になると「今週のもやし消費量」を誇り始めるやつ、ホカは知ってます🤣 でも意外と節約ごはんが一番美味しかったりするので、一緒に探しましょう！</div>
+    <button class="copy" onclick="copyText(this,'r5_3')">📋 これをコピー</button>
+  </div>
+  <label class="chk"><input type="checkbox" data-key="done_2026-07-02_5" onchange="toggleDone(this,'done_2026-07-02_5')"> 対応済みにする</label>
+</div>
+<div class="card" id="c6">
+  <div class="meta"><span class="badge">🆕11時間</span><span class="user">@___140yen</span><span class="kw">🔍節約ごはん</span></div>
+  <div class="post">節約ごはんを教えてほしい、今日の買い物でお米・キャベツ・豚こま・挽き肉・ししゃも・卵を買ったと報告する投稿</div>
+  <button class="more" onclick="toggleMore(this)">…もっと読む</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@___140yen/post/DaPtZuZE9_4" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r6_1" data-reply="お米・キャベツ・豚こま・挽き肉・ししゃも・卵って節約食材の最強布陣が揃ってますね😌 バリエーションも出しやすくて、これだけあれば何日でも乗り切れそうです！">お米・キャベツ・豚こま・挽き肉・ししゃも・卵って節約食材の最強布陣が揃ってますね😌 バリエーションも出しやすくて、これだけあれば何日でも乗り切れそうです！</div>
+    <button class="copy" onclick="copyText(this,'r6_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・ちょいtips</div>
+    <div class="rtext" id="r6_2" data-reply="その食材なら「豚こまキャベツ炒め」「ひき肉そぼろ丼」「卵かけご飯+ししゃも焼き」で3日分くらいの献立が組めそうです。主食をご飯にするだけで食費がグッと抑えられますよ🍚">その食材なら「豚こまキャベツ炒め」「ひき肉そぼろ丼」「卵かけご飯+ししゃも焼き」で3日分くらいの献立が組めそうです。主食をご飯にするだけで食費がグッと抑えられますよ🍚</div>
+    <button class="copy" onclick="copyText(this,'r6_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r6_3" data-reply="ししゃも入ってるのが渋くて好きです🤣 カルシウムも取れてコスパも最高で、節約と栄養の両立できてますよ！スーパーのコスパ食材ランキング上位の陣容ですね。">ししゃも入ってるのが渋くて好きです🤣 カルシウムも取れてコスパも最高で、節約と栄養の両立できてますよ！スーパーのコスパ食材ランキング上位の陣容ですね。</div>
+    <button class="copy" onclick="copyText(this,'r6_3')">📋 これをコピー</button>
+  </div>
+  <label class="chk"><input type="checkbox" data-key="done_2026-07-02_6" onchange="toggleDone(this,'done_2026-07-02_6')"> 対応済みにする</label>
+</div>
+<div class="card" id="c7">
+  <div class="meta"><span class="badge">🆕10時間</span><span class="user">@kurumidango16</span><span class="kw">🔍ご飯作りたくない</span></div>
+  <div class="post">48歳フルタイム立ち仕事・男子3人の子育て20年以上、もう何もしたくない・早く解放されたいというつぶやき</div>
+  <button class="more" onclick="toggleMore(this)">…もっと読む</button>
+  
+  <a class="open-btn" href="https://www.threads.com/@kurumidango16/post/DaP1pgVj1f2" target="_blank" rel="noopener">📱 投稿を開いてリプ</a>
+  <div class="rlabel">リプ案（タップでコピー）</div>
+    <div class="reply">
+    <div class="rtype">案1・やさしい共感</div>
+    <div class="rtext" id="r7_1" data-reply="20年以上誰かのために動いてきて「もう何もしたくない」ってなるの、当たり前すぎます😌 平日休みにダラッとするの全然ありですよ。最低限の家事できてるならそれで十分だと思います。">20年以上誰かのために動いてきて「もう何もしたくない」ってなるの、当たり前すぎます😌 平日休みにダラッとするの全然ありですよ。最低限の家事できてるならそれで十分だと思います。</div>
+    <button class="copy" onclick="copyText(this,'r7_1')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案2・あるある自虐</div>
+    <div class="rtext" id="r7_2" data-reply="「テキパキしよう」と思ってダラッとして最低限だけやる、このループホカも知ってます笑 でも最低限できてるってことは、ちゃんと動いてますよ。むしろすごい。">「テキパキしよう」と思ってダラッとして最低限だけやる、このループホカも知ってます笑 でも最低限できてるってことは、ちゃんと動いてますよ。むしろすごい。</div>
+    <button class="copy" onclick="copyText(this,'r7_2')">📋 これをコピー</button>
+  </div>
+  <div class="reply">
+    <div class="rtype">案3・ちょいユーモア</div>
+    <div class="rtext" id="r7_3" data-reply="大中高の男子3人に20年以上ご飯作ってたら、そりゃ脳みそも体も「もういいよね？」ってなりますよ🍚 同志はめちゃくちゃいると思います。早く解放される日が来ますように！">大中高の男子3人に20年以上ご飯作ってたら、そりゃ脳みそも体も「もういいよね？」ってなりますよ🍚 同志はめちゃくちゃいると思います。早く解放される日が来ますように！</div>
+    <button class="copy" onclick="copyText(this,'r7_3')">📋 これをコピー</button>
+  </div>
+  <label class="chk"><input type="checkbox" data-key="done_2026-07-02_7" onchange="toggleDone(this,'done_2026-07-02_7')"> 対応済みにする</label>
+</div>
+</div>
+<footer>読み取り専用で取得した投稿です。いいね/フォロー/リプは手動で。<br>チェックは端末内だけに保存されます。</footer>
+<script>
+function copyText(btn, id){
+  var t = document.getElementById(id).getAttribute('data-reply');
+  navigator.clipboard.writeText(t).then(function(){
+    btn.classList.add('copied'); var o=btn.textContent; btn.textContent='✅ コピー済み';
+    setTimeout(function(){btn.classList.remove('copied');btn.textContent=o;},1500);
+  });
+}
+function toggleMore(b){var p=b.previousElementSibling;p.classList.toggle('open');b.textContent=p.classList.contains('open')?'閉じる':'…もっと読む';}
+function toggleDone(cb,key){var c=cb.closest('.card');c.classList.toggle('done',cb.checked);localStorage.setItem(key,cb.checked?'1':'');if(window.__engageRefresh)window.__engageRefresh();}
+document.querySelectorAll('input[data-key]').forEach(function(cb){
+  var k=cb.getAttribute('data-key'); if(localStorage.getItem(k)==='1'){cb.checked=true;cb.closest('.card').classList.add('done');}
+});
+</script>
+<script>
+(function(){
+  var GOAL=500, DEADLINE='2026-08-06', DAY='2026-07-02';
+  function lsGet(k,d){try{return JSON.parse(localStorage.getItem(k))||d;}catch(e){return d;}}
+  function lsSet(k,v){localStorage.setItem(k,JSON.stringify(v));}
+  function num(id){var v=parseInt(document.getElementById(id).value,10);return isNaN(v)?0:v;}
+  function setV(id,v){if(v)document.getElementById(id).value=v;}
+  function countReplies(){var n=0;document.querySelectorAll('input[data-key]').forEach(function(cb){if(cb.checked)n++;});return n;}
+  function saveEngage(){lsSet('engage_'+DAY,{thlike:num('in_thlike'),thfollow:num('in_thfollow'),iglike:num('in_iglike'),igfollow:num('in_igfollow'),igcomment:num('in_igcomment'),reply:countReplies()});}
+  function saveFollowers(){var f=lsGet('kpi_followers',{});var ig=num('in_fig'),th=num('in_fth');if(ig>0)f.ig=ig;if(th>0)f.th=th;f.date=DAY;lsSet('kpi_followers',f);renderKpi();}
+  function daysLeft(){var d=new Date(DEADLINE+'T23:59:59'),now=new Date();return Math.max(0,Math.ceil((d-now)/86400000));}
+  function renderKpi(){
+    var f=lsGet('kpi_followers',{}),ig=f.ig||0,th=f.th||0,sum=ig+th;
+    var pct=Math.round(sum/GOAL*100),left=Math.max(0,GOAL-sum),dl=daysLeft(),pace=dl>0?left/dl:left;
+    var e=lsGet('engage_'+DAY,{}),rep=countReplies();
+    var ar=document.getElementById('autoreply');if(ar)ar.textContent=rep;
+    document.getElementById('kpibar').innerHTML=
+      'フォロワー合算 <b>'+sum+'</b> / '+GOAL+'（'+pct+'%）　残り'+left+'人<br>'+
+      '締切まで '+dl+'日 ・ <span class="pace">必要 '+pace.toFixed(1)+'人/日</span><br>'+
+      '<span style="font-size:12px;color:#9a8b78">今日: リプ'+rep+' / Thいいね'+(e.thlike||0)+' Thフォロー'+(e.thfollow||0)+' / IGいいね'+(e.iglike||0)+' IGフォロー'+(e.igfollow||0)+'</span>';
+  }
+  window.__engageRefresh=function(){saveEngage();renderKpi();};
+  var e=lsGet('engage_'+DAY,{});
+  setV('in_thlike',e.thlike);setV('in_thfollow',e.thfollow);setV('in_iglike',e.iglike);setV('in_igfollow',e.igfollow);setV('in_igcomment',e.igcomment);
+  var f=lsGet('kpi_followers',{});setV('in_fig',f.ig);setV('in_fth',f.th);
+  ['in_thlike','in_thfollow','in_iglike','in_igfollow','in_igcomment'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){saveEngage();renderKpi();});});
+  ['in_fig','in_fth'].forEach(function(id){document.getElementById(id).addEventListener('input',saveFollowers);});
+  renderKpi();
+})();
+</script>
+</body></html>
